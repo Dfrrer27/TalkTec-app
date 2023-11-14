@@ -3,7 +3,7 @@ import { useMutation, useQueryClient } from "@tanstack/react-query"
 import { loginReq } from "../api/users"
 import { Link, useNavigate } from "react-router-dom"
 import { Helmet } from "react-helmet"
-import { toast } from "react-hot-toast"
+import toast from "react-hot-toast"
 import "./styles/auth-styles.css"
 import { logo } from "../ImportImages"
 

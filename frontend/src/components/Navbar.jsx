@@ -1,4 +1,4 @@
-import { arrows, help, logo, logoutimage, profile, search, setting } from "../ImportImages"
+import { arrows, help, logo, logoutimage, search, setting } from "../ImportImages"
 import { Link } from "react-router-dom"
 import { useEffect, useState } from "react"
 import { logout, userProfile } from "../api/users"
@@ -61,7 +61,7 @@ const Navbar = () => {
         <div className="nav-right">
 
           <div className={`nav-user-icon online ${menuOpen ? 'settings-menu-height' : ''}`} onClick={toggleMenu}> {/* modificar onclick = onclick="settingsMenuToggle()" */}
-            <img src={profile} />
+            <img src={userInfo.avatar} />
           </div>
             
           {/* settings menu */}
@@ -75,7 +75,7 @@ const Navbar = () => {
             <div className="settings-menu-inner">
 
               <div className="user-profile">
-                <img src={profile} />
+                <img src={userInfo.avatar} />
                   <div>
                     <p>{userInfo ? `${userInfo.name} ${userInfo.last_name}` : 'Cargando...'}</p>
                     <span><Link to={user}>Ver mi perfil</Link></span>
