@@ -6,6 +6,8 @@ import LoginPage from "./pages/LoginPage";
 import HomePage from "./pages/HomePage";
 import RegisterPage from "./pages/RegisterPage";
 import UserProfilePage from "./pages/UserProfilePage";
+import SoloPostPage from "./pages/SoloPostPage";
+import DegreePage from "./pages/DegreePage";
 import './App.css'
 
 function App() {
@@ -18,6 +20,8 @@ function App() {
           {/* Nesecitan estar autenticados para acceder a estas paginas: */}
           <Route element={<PrivateRoute />}>
             <Route  path="/home" element={<HomePage />} />
+            <Route path="/publication/:id" element={<SoloPostPage />} />
+            <Route path="/degree/:degreeId" element={<DegreePage />} /> {/* Esta es la ruta para las carreras, puedes modificarla para que sea mediante el id de degree o algo asi */}
             <Route path="/:name" element={<UserProfilePage />} />
           </Route>
           

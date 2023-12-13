@@ -91,6 +91,26 @@
     box-shadow: var(--left--envet--box-shadow);
 }
 
+.image-preview {
+    position: relative;
+}  
+
+.image-preview button {
+    border-radius: 20px;
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background-color: var(--bg-color);
+    border: none;
+    cursor: pointer;
+    margin: 0;
+    padding: 0;
+}
+
+.hidden {
+    display: none;
+}
+
 .event p{
     font-size: 12px;
 }
@@ -120,15 +140,17 @@
     width: 670px;
     background-color: var(--bg-color);
     border-radius: 6px;
+    margin-bottom: 5px;
     padding: 20px;
-    color: #626262;
+    color: var(--text--color);
 }
 
 .post-input-container{
     padding-left: 55px;
-    padding-top: 20px;
+    padding-top: 5px;
 }
 .post-input-container textarea{
+    color: var(--text--color);
     width: 100%;
     border: 0;
     outline: 0;
@@ -136,10 +158,32 @@
     background: transparent;
     resize: none;
 }
-.add-post-links{
+
+.add-post-links {
+    display: flex;
+    justify-content: space-between; 
+}
+
+.add-post-links label {
+    cursor: pointer;
     display: flex;
     margin-top: 10px;
 }
+
+.public-button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.public-button:hover {
+  background-color: #0056b3;
+}
+
 .add-post-links a{
     text-decoration: none;
     display: flex;
@@ -152,7 +196,7 @@
     width: 20px;
     margin-right: 10px;
 }
-.post-container {
+.post-container-home {
     width: 670px;
     background: var(--bg-color);
     border-radius: 6px;
@@ -160,7 +204,37 @@
     color: #626262;
     margin: 20px 0;
 }
-.user-profile span{
+
+.post-container-home a {
+    text-decoration: none;
+}
+
+.user-profile-home{
+  display: flex;
+  align-items: center;
+}
+.user-profile-home img{
+  width: 45px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+.user-profile-home p{
+  margin-bottom: -5px;
+  font-weight: 500;
+  color: var(--text--color);
+}
+.user-profile-home small{
+  font-size: 12px;
+}
+
+.user-profile-home a{
+    text-decoration: none;
+    margin-bottom: -5px;
+    font-weight: 500;
+    color: var(--text--color);      
+}
+
+.user-profile-home span{
     font-size: 13px;
     color: var(--textsecondary--color);
 }
@@ -183,12 +257,18 @@
     align-items: center;
     justify-content: space-between;
 }
+
+.activity-icons {
+    display: inline-flex;
+    align-items: center;
+}
+
 .activity-icons div img{
     width: 18px;
     margin-right: 10px;
 }
 
-.activity-icons div {
+.activity-icons > div, .comment {
     display: inline-flex;
     align-items: center;
     margin-right: 30px;

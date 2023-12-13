@@ -1,4 +1,4 @@
-.modal-overlay {
+.modal-overlay-profile {
   background: rgba(0, 0, 0, 0.5);
   position: fixed;
   top: 0;
@@ -11,8 +11,8 @@
   z-index: 1000;
 }
 
-.modal-content {
-  background: #fff;
+.modal-content-profile {
+  background: var(--body-color);
   padding: 20px;
   border-radius: 8px;
   width: 400px;
@@ -20,11 +20,12 @@
   position: relative;
 }
 
-.modal-header {
+.modal-header-profile {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 20px;
+  color: var(--text--color);
 
   h2 {
     font-size: 1.5rem;
@@ -38,11 +39,12 @@
 
   .close-icon {
     font-size: 1.5rem;
-    color: #333;
+    color: var(--text--color);
   }
 }
 
 .file-input-label {
+  color: var(--text--color);
   cursor: pointer;
   display: flex;
   margin-bottom: 10px;

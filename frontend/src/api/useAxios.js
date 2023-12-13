@@ -12,9 +12,11 @@ export const authAxios = axios.create({
     withCredentials: true,
 })
 
+// Interceptor de solicitudes para agregar el token de acceso a las solicitudes autenticadas
 authAxios.interceptors.request.use(async (config) =>{
     const access = localStorage.getItem('access')
 
+    // Configuración del encabezado de autorización
     config.headers = {
         Authorization: `Bearer ${access}`, 
     }
@@ -25,9 +27,11 @@ authAxios.interceptors.request.use(async (config) =>{
     const now = new Date()
     const five = 1000 * 60 * 5
 
+    // Comprobar si el token de acceso está a punto de caducar
     if(exp.getTime() - now.getTime() < five) {
 
         try {
+            // Obtener un nuevo token de acceso utilizando el token de actualización
             const oldrefresh = localStorage.getItem('refresh')
             const res = await axi.post('/users/refresh/', { oldrefresh })
             const { access, refresh } = res.data
@@ -36,6 +40,7 @@ authAxios.interceptors.request.use(async (config) =>{
             localStorage.setItem('refresh', refresh)
 
         } catch(err) {
+             // Limpiar el almacenamiento local y redirigir a la página de inicio de sesión en caso de error
             localStorage.clear()
             window.location.href = '/login'
         }

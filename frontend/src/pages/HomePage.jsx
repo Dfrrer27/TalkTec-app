@@ -1,106 +1,128 @@
 import LeftSidebar from "../components/LeftSidebar"
-import RightSidebar from "../components/RightSidebar";
+import RightSidebar from "../components/RightSidebar"
 import { Helmet } from "react-helmet"
+import { getPublications } from "../api/publication"
+import { AiOutlineComment } from "react-icons/ai"
+import { Link } from "react-router-dom"
+import { useInfiniteQuery } from "@tanstack/react-query"
+import { useInView } from "react-intersection-observer"
+import { useEffect } from "react"
+import Like from "../components/Like"
+import AddPublication from "../components/AddPublication"
+import toast from "react-hot-toast"
 import "./styles/home-styles.css"
-import { comments, feedOne, feedTwo, feeling, likeBlue, liveVideo, photo, profile, share } from "../ImportImages"
 
 const HomePage = () => {
 
+  const { ref, inView } = useInView()
+
+  const { data, isLoading, isError, error, isFetchingNextPage, fetchNextPage, hasNextPage } = useInfiniteQuery({
+    queryKey: ['publications'],
+    queryFn: getPublications,
+    getNextPageParam: (lastPage) => lastPage.meta.next
+  })
+
+  useEffect(() => {
+    if (inView){
+      fetchNextPage()
+    }
+  }, [fetchNextPage, inView])
+
+  if (isLoading ) return <div className="loader-content"> <span className="loader"></span> </div>
     
+  if (isError ) return toast.error(error.message)
+
+  return (
+
+    console.log(data),
+
+    <div className="container-home">
+
+    <Helmet>
+      <title>TalkTec | Home</title>
+    </Helmet>
     
-    return (
-        <div className="container-home">
+    <LeftSidebar publications={data?.pages}/>
 
-        <Helmet>
-            <title>TalkTec | Home</title>
-        </Helmet>
-        
-        <LeftSidebar />
+    <div className="main-content">
 
-        <div className="main-content">
+      <AddPublication />
 
-            <div className="write-post-container">
-                <div className="user-profile">
-                    <img src={profile} />
+      {data?.pages.map(page => (
+        <div key={page.meta.page}>
+
+          {page.data.map(t => (
+
+            <>
+
+              <div key={t.id} className="post-container-home">
+
+                <div className="post-row">
+                  <div className="user-profile-home">
+                    <img src={`http://127.0.0.1:8000/${t.avatar}`} alt="profile-photo"/>
                     <div>
-                        <p>Diego Ferrer</p>
-                        <small>Public</small>
+                      <Link to={`/${t.user}`}>
+                        {t.user} {t.userlastname}
+                      </Link>
+                      <br />
+                      <span>
+                        {new Date(t.created_at).toLocaleString('es-ES', {
+                          year: 'numeric',
+                          month: 'numeric',
+                          day: 'numeric',
+                          hour: 'numeric',
+                          minute: 'numeric',
+                        })}
+                      </span>
                     </div>
+                  </div>
                 </div>
+                  
+                <Link to={`/publication/${t.id}`}>
+                  <p className="post-text">
+                    {t.content}
+                  </p>
 
-                <div className="post-input-container">
-                    <textarea rows="3" placeholder="What's on your mid, Jhon"></textarea>
-                    <div className="add-post-links">
-                        <a href="#"><img src={liveVideo} />Live video</a>
-                        <a href="#"><img src={photo} />Photo/Video</a>
-                        <a href="#"><img src={feeling} />Feeling/Activity</a>
-                    </div>
-                </div>
+                  <img src={t.image} className="post-img" />
+                </Link>
 
-            </div>
 
-            <div className="post-container">
                 <div className="post-row">
-                    <div className="user-profile">
-                        <img src={profile} />
-                        <div>
-                            <p>Diego Ferrer</p>
-                            <span>Octubre 19 2023, 3:30 pm</span>
-                        </div>
-                    </div>
-                    <a href="#"></a>
+                  <div className="activity-icons">
+
+                  <div className="icon-like">
+                    <Like t={t}/>
+                  </div>
+
+                  <Link className="comment" to={`/publication/${t.id}`}>
+                    <AiOutlineComment className="icon-coment" size={24} />
+                    <p>{t.parent.length}</p>
+                  </Link>
+
+                  </div> 
                 </div>
+
+              </div>
                 
-                <p className="post-text">Ya se acerca el T&C WEEK
-                    <br />
-                    <a href="#">#Tecsup</a> <a href="#">#SoyunFrontend</a> <a href="#">#T&CWEEK</a>
-                </p>
-                    <img src={feedOne} className="post-img" />
-
-                    <div className="post-row">
-                        <div className="activity-icons">
-                            <div><img src={likeBlue} />120</div>
-                            <div><img src={comments} />45</div>
-                            <div><img src={share} />20</div>
-                        </div> 
-                    </div>
-            </div>
-
-            <div className="post-container">
-                <div className="post-row">
-                    <div className="user-profile">
-                        <img src={profile} />
-                        <div>
-                            <p>Benjamín Veli Mariano</p>
-                            <span>Octubre 25 2023, 11:30 am</span>
-                        </div>
-                    </div>
-                    <a href="#"></a>
+              {!isLoading && data.pages.length === 0 && <p>No results</p>}
+              {!isLoading && data.pages.length  > 0 && hasNextPage && (
+                <div ref={ref} >
+                  {isLoading || isFetchingNextPage ? <div className="loader-content"> <span className="loader"></span> </div> : null}
                 </div>
-                
-                <p className="post-text">Tecnología digital va  ganando en la mayoría de juegos de gymkana.
-                    <br /> 
-                    <a href="#">#Tecsup</a> <a href="#">#Asistirporlospuntos</a> <a href="#">#ArribaTD</a><a href="#">#T&CWEEK</a>
-                </p>
-                    <img src={feedTwo} className="post-img" />
+              )}
 
-                    <div className="post-row">
-                        <div className="activity-icons">
-                            <div><img src={likeBlue} />120</div>
-                            <div><img src={comments} />45</div>
-                            <div><img src={share} />20</div>
-                        </div> 
-                    </div>
-            </div>
-
-
-
+            </>
+          ))}
         </div>
 
-        <RightSidebar />
+      ))}
 
-        </div>
-    )
+    </div>
+
+    <RightSidebar />
+
+    </div>
+  )
 }
 
 export default HomePage

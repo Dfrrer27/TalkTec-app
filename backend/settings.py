@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'rest_framework_simplejwt.token_blacklist',
     'corsheaders',
     'users',
+    'publications',
 ]
 
 MIDDLEWARE = [
@@ -151,8 +152,8 @@ CORS_ALLOWED_ORIGINS = [
 CORS_ALLOW_CREDENTIALS = True
 
 SIMPLE_JWT = {
-    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=50), # Tiempo de vida del token
-    'REFRESH_TOKEN_LIFETIME': timedelta(minutes=50), # Tiempo de vida del token
+    'ACCESS_TOKEN_LIFETIME': timedelta(hours=20), # Tiempo de vida del token
+    'REFRESH_TOKEN_LIFETIME': timedelta(hours=5), # Tiempo de vida del token
     'ROTATE_REFRESH_TOKENS': True, # Rotan los tokens, cambian 
     'BLACKLIST_AFTER_ROTATION': True, # Pone en lista negra los tokens que ya se utilizaron
     'UPDATE_LAST_LOGIN': False,

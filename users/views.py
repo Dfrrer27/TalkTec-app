@@ -13,12 +13,25 @@ from . permissions import IsUserOrReadOnly
 
 # Crear vistas y lógica para las peticiones
 
+# Buscar usuarios
+@api_view(['GET'])
+@permission_classes([IsAuthenticated])
+def search(request):
+    query = request.query_params.get('query', None) # Buscar por parametro
+    if query is not None:
+        users = User.objects.filter(name__icontains=query)
+        serializers = SearchSerializer(users, many=True)
+        return Response({ 'users': serializers.data })
+    else:
+        return Response({'users': []})
+
+# Detalle de Usuario
 class UserDetailView(generics.RetrieveUpdateDestroyAPIView):
-    queryset = User.objects.all()
-    serializer_class = UserSerializer
-    permission_classes = [IsAuthenticated, IsUserOrReadOnly]
-    lookup_field = 'name'
-    lookup_url_kwarg = 'name'
+    queryset = User.objects.all() # Obtener los objetos de usuario
+    serializer_class = UserSerializer # Especifica que serializador estamos utilizando
+    permission_classes = [IsAuthenticated, IsUserOrReadOnly] # Permisos requeridos como autenticacion y personalizados
+    lookup_field = 'name' # Especificación del campo de búsqueda para recuperar objetos de usuario
+    lookup_url_kwarg = 'name' # Especificación del nombre del argumento de URL para buscar el campo de búsqueda
 
 @api_view(['POST']) # Función http 
 def register(request):

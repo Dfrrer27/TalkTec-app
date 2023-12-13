@@ -55,12 +55,12 @@ const LoginPage = () => {
                 <input 
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  type="email" name="email" id="email" placeholder="name@company.com"/>
+                  type="email" name="email" id="email" placeholder="name@company.com" autoComplete="off"/>
 
                 <input 
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                  type="password" name="password" id="password" placeholder="••••••••"/>
+                  type="password" name="password" id="password" placeholder="••••••••" autoComplete='off'/>
 
                 <button type="submit">Iniciar Sesión</button>
             </form>

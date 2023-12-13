@@ -23,7 +23,7 @@ import photo from './assets/imgs/photo.png';
 import photoTwo from './assets/imgs/photo2.png';
 import profile from './assets/imgs/profile-pic.jpg';
 import profileStudy from './assets/imgs/profile-study.png';
-import search from './assets/imgs/search.png';
+import searchImage from './assets/imgs/search.png';
 import seeMore from './assets/imgs/see-more.png';
 import setting from './assets/imgs/setting.png';
 import share from './assets/imgs/share.png';
@@ -38,4 +38,4 @@ import shortcutEight from './assets/imgs/shortcut-8.png';
 import tcWeek from './assets/imgs/TCWek.png'
 import upload from './assets/imgs/upload.png'
 
-export { adfriends, arrow, arrows, comments, display, feedOne, feedTwo, feedback, feeling, friends, group, help, inbox, likeBlue, like, liveVideo, location, logo, logoutimage, more, photo, photoTwo, profile, profileStudy, search, seeMore, setting, share, shortcutOne, shortcutTwo, shortcutThree, shortcutFour, shortcutFive, shortcutSix, shortcutSeven, shortcutEight, tcWeek, upload };
+export { adfriends, arrow, arrows, comments, display, feedOne, feedTwo, feedback, feeling, friends, group, help, inbox, likeBlue, like, liveVideo, location, logo, logoutimage, more, photo, photoTwo, profile, profileStudy, searchImage, seeMore, setting, share, shortcutOne, shortcutTwo, shortcutThree, shortcutFour, shortcutFive, shortcutSix, shortcutSeven, shortcutEight, tcWeek, upload };

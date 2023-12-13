@@ -141,11 +141,35 @@
       }
     }
   }
-  
-  .p-card {
-    background-color: var(--bg-color);
-    border-radius: 18px;
-    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-    padding: 35px 15px;
-    width: 100%;
-  }
+
+.icon-delete, .icon-edit, .icon-like, .icon-coment {
+  transition: color 0.3s ease; 
+}
+
+.comment, .icon-delete, .icon-edit, .icon-like {
+  color: var(--text--color);
+}
+
+.icon-coment:hover {
+  color: #00a6ff;
+}
+
+.icon-delete:hover {
+  color: red;
+}
+
+.icon-like:hover {
+  color: blue
+}
+
+.icon-edit:hover {
+  color: rgb(0, 167, 0);
+}
+
+.p-card {
+  background-color: var(--bg-color);
+  border-radius: 18px;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  padding: 35px 15px;
+  width: 100%;
+}

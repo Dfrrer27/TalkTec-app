@@ -86,22 +86,22 @@ const RegisterPage = () => {
                 <input
                 value={code}
                 onChange={(e) => setCode(e.target.value)} 
-                type="code" name="code" id="code" placeholder="123456"/>
+                type="code" name="code" id="code" placeholder="123456" autoComplete="off"/>
   
                 <input
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}  
-                type="email" name="email" id="email" placeholder="name@email.com"/>
+                type="email" name="email" id="email" placeholder="name@email.com" autoComplete="off"/>
   
                 <input 
                 value={name}
                 onChange={(e) => setName(e.target.value)}  
-                type="name" name="name" id="name" placeholder="Diego"/>
+                type="name" name="name" id="name" placeholder="Diego" autoComplete="off"/>
   
                 <input
                 value={last_name}
                 onChange={(e) => setLastName(e.target.value)}   
-                type="last_name" name="last_name" id="last_name" placeholder="Ferrer"/>
+                type="last_name" name="last_name" id="last_name" placeholder="Ferrer" autoComplete="off"/>
   
                 <select
                 value={degree}
@@ -120,12 +120,12 @@ const RegisterPage = () => {
                 <input
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}   
-                  type="password" name="password" id="password" placeholder="••••••••" />    
+                  type="password" name="password" id="password" placeholder="••••••••" autoComplete="off"/>    
   
                 <input
                   value={re_password}
                   onChange={(e) => setRePassword(e.target.value)}   
-                  type="password" name="re-password" id="re-password" placeholder="••••••••" />
+                  type="password" name="re-password" id="re-password" placeholder="••••••••" autoComplete="off"/>
   
                 { handleMatch() ? null : (<p className="handleMatch">Las contraseñas deben coincidir</p>) }
   
