@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react'
 import { useMutation } from "@tanstack/react-query"
 import { registerReq } from "../api/users"
 import { Link, useNavigate } from "react-router-dom"
@@ -10,30 +10,30 @@ import { logo } from "../ImportImages"
 
 const RegisterPage = () => {
     // Declaración de variables de estado y funciones de control
-    const navigate = useNavigate();
+    const navigate = useNavigate()
 
     // Variables de estado para datos del formulario
-    const [departments, setDepartments] = useState([]);
-    const [loading, setLoading] = useState(false);
-    const [code, setCode] = useState("");
-    const [email, setEmail] = useState("");
-    const [name, setName] = useState("");
-    const [last_name, setLastName] = useState("");
-    const [degree, setDegree] = useState("");
-    const [password, setPassword] = useState("");
-    const [re_password, setRePassword] = useState("");
+    const [departments, setDepartments] = useState([])
+    const [loading, setLoading] = useState(false)
+    const [code, setCode] = useState("")
+    const [email, setEmail] = useState("")
+    const [name, setName] = useState("")
+    const [last_name, setLastName] = useState("")
+    const [degree, setDegree] = useState("")
+    const [password, setPassword] = useState("")
+    const [re_password, setRePassword] = useState("")
 
     // useEffect para obtener la lista de departamentos al cargar la página
     useEffect(() => {
     // Realiza una solicitud para obtener la lista de carreras desde Django
         axi.get('/users/departments/') // ruta relativa
         .then((response) => {
-            setDepartments(response.data); // Almacena la lista de departamentos en el estado
+            setDepartments(response.data) // Almacena la lista de departamentos en el estado
         })
         .catch((error) => {
-            console.error(error);
-        });
-    }, []);
+            console.error(error)
+        })
+    }, [])
 
     const registerMutation = useMutation({
         mutationFn: () => registerReq(code, email, name, last_name, degree, password),
@@ -63,7 +63,7 @@ const RegisterPage = () => {
         if (password !== re_password) {
             toast.error("Las contraseñas deben coincidir")
         } else {
-            setLoading(true);
+            setLoading(true)
             registerMutation.mutate() // Inicia la solicitud de registro del usuario
         }
     }

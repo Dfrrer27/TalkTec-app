@@ -1,13 +1,13 @@
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
-import PrivateRoute from "./components/PrivateRoute";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom"
+import PrivateRoute from "./components/PrivateRoute"
 
-import Layout from "./components/Layout";
-import LoginPage from "./pages/LoginPage";
-import HomePage from "./pages/HomePage";
-import RegisterPage from "./pages/RegisterPage";
-import UserProfilePage from "./pages/UserProfilePage";
-import SoloPostPage from "./pages/SoloPostPage";
-import DegreePage from "./pages/DegreePage";
+import Layout from "./components/Layout"
+import LoginPage from "./pages/LoginPage"
+import HomePage from "./pages/HomePage"
+import RegisterPage from "./pages/RegisterPage"
+import UserProfilePage from "./pages/UserProfilePage"
+import SoloPostPage from "./pages/SoloPostPage"
+import DegreePage from "./pages/DegreePage"
 import './App.css'
 
 function App() {

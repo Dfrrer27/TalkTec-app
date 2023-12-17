@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState } from 'react'
 import { useMutation, useQueryClient } from "@tanstack/react-query"
 import { loginReq } from "../api/users"
 import { Link, useNavigate } from "react-router-dom"
@@ -12,9 +12,9 @@ const LoginPage = () => {
   const navigate = useNavigate()
   const queryClient = useQueryClient()
   
-  const [loading, setLoading] = useState(false);
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [loading, setLoading] = useState(false)
+  const [email, setEmail] = useState("")
+  const [password, setPassword] = useState("")
 
   const loginMutation = useMutation({
     mutationFn: loginReq,
@@ -35,7 +35,7 @@ const LoginPage = () => {
     event.preventDefault()
     setLoading(true)
     loginMutation.mutate({ email, password })
-  };
+  }
 
   if (loading) { 
     return <div className="loader-content"> <span className="loader"></span> </div>

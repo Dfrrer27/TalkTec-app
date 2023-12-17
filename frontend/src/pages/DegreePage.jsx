@@ -1,23 +1,23 @@
-import { useParams, Link } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom'
 import { getPublicationsByDegree } from "../api/publication" 
-import { AiOutlineComment } from "react-icons/ai";
+import { AiOutlineComment } from "react-icons/ai"
 import { useQuery } from "@tanstack/react-query"
-import Like from "../components/Like";
-import LeftSidebar from "../components/LeftSidebar";
-import RightSidebar from "../components/RightSidebar";
-import toast from "react-hot-toast";
+import Like from "../components/Like"
+import LeftSidebar from "../components/LeftSidebar"
+import RightSidebar from "../components/RightSidebar"
+import toast from "react-hot-toast"
 
 const DegreePage = () => {
 
-  const { degreeId } = useParams();
+  const { degreeId } = useParams()
 
   const { data: publications, isLoading, isError, error } = useQuery({
     queryKey: ['PublicationsByDegree', degreeId], 
     queryFn: () => getPublicationsByDegree(degreeId),
   })
 
-  if (isLoading) return <div className="loader-content"> <span className="loader"></span> </div>;
-  if (isError) return toast.error(error.message);
+  if (isLoading) return <div className="loader-content"> <span className="loader"></span> </div>
+  if (isError) return toast.error(error.message)
 
   console.log(publications)
 

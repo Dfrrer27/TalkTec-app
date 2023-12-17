@@ -115,6 +115,6 @@ MyPosts.propTypes = {
     name: PropTypes.string.isRequired,
   }).isRequired,
   myUser: PropTypes.string.isRequired,
-};
+}
 
 export default MyPosts

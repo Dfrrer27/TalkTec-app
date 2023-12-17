@@ -1,5 +1,5 @@
-import "../pages/styles/home-styles.css";
-import { tcWeek } from "../ImportImages";
+import "../pages/styles/home-styles.css"
+import { tcWeek } from "../ImportImages"
 
 const RightSidebar = () => {
   return (

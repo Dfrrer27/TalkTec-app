@@ -3,43 +3,43 @@ import { useState } from "react"
 import { editPublication } from "../api/publication"
 import { AiOutlineCloseCircle } from "react-icons/ai"
 import toast from "react-hot-toast"
-import PropTypes from 'prop-types';
+import PropTypes from 'prop-types'
 import "./styles/editpublication-styles.scss"
 
 const EditPublication = ({ publication, close }) => {
 
-  const queryClient = useQueryClient();
-  const [content, setContent] = useState(publication.content);
-  const [image, setImage] = useState(null);
+  const queryClient = useQueryClient()
+  const [content, setContent] = useState(publication.content)
+  const [image, setImage] = useState(null)
 
   const handleImageChange = (event) => {
-    setImage(event.currentTarget.files[0]);
-  };
+    setImage(event.currentTarget.files[0])
+  }
 
   const editPublicationMutation = useMutation({
     mutationFn: editPublication,
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ["publications"] });
-      toast.success("Publicación actualizada");
-      close();
+      queryClient.invalidateQueries({ queryKey: ["publications"] })
+      toast.success("Publicación actualizada")
+      close()
     },
     onError: (error) => {
-      console.error("Error al editar la publicación:", error);
-      toast.error("Hubo un error al editar la publicación");
-      close();
+      console.error("Error al editar la publicación:", error)
+      toast.error("Hubo un error al editar la publicación")
+      close()
     },
-  });
+  })
 
   const handleSubmit = (e) => {
-    e.preventDefault();
-    const formData = new FormData();
-    formData.append("content", content);
-    formData.append("id", publication.id);
+    e.preventDefault()
+    const formData = new FormData()
+    formData.append("content", content)
+    formData.append("id", publication.id)
     if (image) {
-      formData.append("image", image);
+      formData.append("image", image)
     }
-    editPublicationMutation.mutate(formData);
-  };
+    editPublicationMutation.mutate(formData)
+  }
 
 
   return (
@@ -99,6 +99,6 @@ EditPublication.propTypes = {
     id: PropTypes.number.isRequired,
   }).isRequired,
   close: PropTypes.func.isRequired,
-};
+}
 
 export default EditPublication

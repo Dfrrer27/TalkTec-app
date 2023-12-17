@@ -1,7 +1,7 @@
 import { BiLike } from "react-icons/bi"
 import { useQueryClient, useMutation } from "@tanstack/react-query"
 import { like } from "../api/publication"
-import PropTypes from "prop-types";
+import PropTypes from "prop-types"
 
 const Like = ({ t }) => {
 
@@ -31,6 +31,6 @@ Like.propTypes = {
     iliked: PropTypes.bool.isRequired,
     likes_count: PropTypes.number.isRequired,
   }).isRequired,
-};
+}
 
 export default Like

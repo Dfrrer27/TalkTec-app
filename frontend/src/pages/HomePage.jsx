@@ -34,8 +34,6 @@ const HomePage = () => {
 
   return (
 
-    console.log(data),
-
     <div className="container-home">
 
     <Helmet>

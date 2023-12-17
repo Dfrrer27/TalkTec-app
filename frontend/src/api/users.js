@@ -1,5 +1,5 @@
 import { axi, authAxios } from "./useAxios"
-import jwt_decode from "jwt-decode";
+import jwt_decode from "jwt-decode"
 
 // Función para buscar un usuario
 export const q = async (query) => {
@@ -14,7 +14,7 @@ export const updateProfile = async (data) => {
 
 // Función para obtener el perfil de un usuario específico
 export const userProfile = async (name) => {
-    // console.log(`/users/${name}/`);
+    // console.log(`/users/${name}/`)
     const res = await authAxios.get(`/users/${name}/`)
     return res.data
 }

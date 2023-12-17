@@ -4,13 +4,14 @@ import { useEffect, useState } from "react"
 import { logout, userProfile, q } from "../api/users"
 import { useQuery } from "@tanstack/react-query"
 import "./styles/navbar-styles.css"
+import PropTypes from 'prop-types'
 import toast from "react-hot-toast"
 
 function Result({ data, isLoading, isError, error }) {
 
   const clearSearch = () => {
-    setSearch('');
-  };
+    setSearch('')
+  }
 
   if (isLoading) { return <div className="loader-content"> <span className="loader"></span> </div> }
   if (isError) { return toast.error(error.message)}
@@ -53,42 +54,43 @@ const Navbar = () => {
   })
 
   const handleProfileClick = () => {
-    setMenuOpen(false); // Cierra el menú desplegable cuando se hace clic en "Ver mi perfil"
-  };
+    setMenuOpen(false) // Cierra el menú desplegable cuando se hace clic en "Ver mi perfil"
+  }
 
   useEffect(() => {
-    const localTheme = localStorage.getItem('theme');
+    const localTheme = localStorage.getItem('theme')
     if (localTheme) {
-      setTheme(localTheme);
+      setTheme(localTheme)
     }
     // Obtener detalles del usuario al cargar el componente
-    getUserInfo();
-  }, []);
+    getUserInfo()
+  }, [])
 
   const getUserInfo = async () => {
     try {
-      const user = await userProfile(localStorage.getItem('name'));
-      setUserInfo(user);
+      const user = await userProfile(localStorage.getItem('name'))
+      setUserInfo(user)
     } catch (error) {
-      console.error('Error al obtener detalles del usuario', error);
+      console.error('Error al obtener detalles del usuario', error)
     }
-  };
+  }
 
   const toggleTheme = () => {
-    const updatedTheme = theme === 'light' ? 'dark' : 'light';
-    setTheme(updatedTheme);
-    localStorage.setItem('theme', updatedTheme);
-  };
+    const updatedTheme = theme === 'light' ? 'dark' : 'light'
+    setTheme(updatedTheme)
+    localStorage.setItem('theme', updatedTheme)
+  }
 
   const toggleMenu = () => {
-    setMenuOpen(!menuOpen);
-  };
+    setMenuOpen(!menuOpen)
+  }
 
   useEffect(() => {
-    document.body.classList.toggle('dark-theme', theme === 'dark');
-  }, [theme]);
+    document.body.classList.toggle('dark-theme', theme === 'dark')
+  }, [theme])
   
   return (
+    // console.log(userInfo),
     <>
       <nav>
         <Link className="nav-left" to='/home'>
@@ -146,5 +148,12 @@ const Navbar = () => {
     </>
   )
 }
+
+Result.propTypes = {
+  data: PropTypes.arrayOf(PropTypes.object),
+  isLoading: PropTypes.bool.isRequired,
+  isError: PropTypes.bool.isRequired,
+  error: PropTypes.object,
+};
 
 export default Navbar

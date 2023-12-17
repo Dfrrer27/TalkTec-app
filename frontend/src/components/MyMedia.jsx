@@ -1,4 +1,4 @@
-import PropTypes from "prop-types";
+import PropTypes from "prop-types"
 
 const MyMedia = ({ publications }) => {
   return (
@@ -19,6 +19,6 @@ MyMedia.propTypes = {
       image: PropTypes.string.isRequired,
     })
   ).isRequired,
-};
+}
 
 export default MyMedia

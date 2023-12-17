@@ -4,7 +4,7 @@ import { BiEditAlt } from "react-icons/bi"
 import { MdDeleteOutline } from "react-icons/md"
 import { Link } from "react-router-dom"
 import { useState } from "react"
-import PropTypes from "prop-types";
+import PropTypes from "prop-types"
 import toast from "react-hot-toast"
 import AddComment from "./AddComment"
 import EditComment from "./EditComment"
@@ -33,8 +33,6 @@ const Comments = ({ publication }) => {
       toast.error(error.message)
     }
   })
-
-  console.log(publication)
 
   if(isLoading) return <div className="loader-content"> <span className="loader"></span> </div>
   if(isError) return toast.error(error.message) 
@@ -106,6 +104,6 @@ Comments.propTypes = {
   publication: PropTypes.shape({
     id: PropTypes.number.isRequired
   }).isRequired,
-};
+}
 
 export default Comments

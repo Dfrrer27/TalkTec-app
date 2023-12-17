@@ -3,12 +3,12 @@ import { useQuery } from "@tanstack/react-query"
 import { userProfile } from "../api/users"   
 import { getUserPublications } from "../api/publication"
 import { Helmet } from "react-helmet"
-import { IoMdCalendar } from "react-icons/io";
-import { useState } from "react";
-import EditProfile from "../components/EditProfile";
-import MyPosts from "../components/MyPosts";
-import MyLikes from "../components/MyLikes";
-import MyMedia from "../components/MyMedia";
+import { IoMdCalendar } from "react-icons/io"
+import { useState } from "react"
+import EditProfile from "../components/EditProfile"
+import MyPosts from "../components/MyPosts"
+import MyLikes from "../components/MyLikes"
+import MyMedia from "../components/MyMedia"
 import toast from "react-hot-toast"
 import "./styles/profile-styles.scss"
 

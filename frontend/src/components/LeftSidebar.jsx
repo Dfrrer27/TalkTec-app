@@ -1,6 +1,6 @@
-import { shortcutOne, shortcutTwo, shortcutThree, shortcutFour, shortcutFive, shortcutSix, shortcutSeven, shortcutEight } from "../ImportImages";
-import { Link } from "react-router-dom";
-import "../pages/styles/home-styles.css";
+import { shortcutOne, shortcutTwo, shortcutThree, shortcutFour, shortcutFive, shortcutSix, shortcutSeven, shortcutEight } from "../ImportImages"
+import { Link } from "react-router-dom"
+import "../pages/styles/home-styles.css"
 
 const LeftSidebar = () => {
 

@@ -1,10 +1,10 @@
 import { editComment } from "../api/publication"
 import { useMutation, useQueryClient } from "@tanstack/react-query"
-import { AiOutlineCloseCircle } from "react-icons/ai";
-import { useState } from "react";
+import { AiOutlineCloseCircle } from "react-icons/ai"
+import { useState } from "react"
 import "./styles/editcomment-styles.scss"
 import toast from "react-hot-toast"
-import PropTypes from "prop-types";
+import PropTypes from "prop-types"
 
 
 const EditComment = ({ c, close }) => {
@@ -29,7 +29,7 @@ const EditComment = ({ c, close }) => {
   const handleSubmit = (e) => {
     e.preventDefault()
     editCommentMutation.mutate({ id: c.id, body: body, publication: c.publication })
-  };
+  }
 
   const handleChange = (e) => {
     setBody(e.target.value)
@@ -84,6 +84,6 @@ EditComment.propTypes = {
     publication: PropTypes.number.isRequired,
   }).isRequired,
   close: PropTypes.func.isRequired,
-};
+}
 
 export default EditComment

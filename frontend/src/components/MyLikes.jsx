@@ -4,7 +4,7 @@ import { AiOutlineComment } from "react-icons/ai"
 import { Link } from "react-router-dom"
 import toast from "react-hot-toast"
 import Like from "./Like"
-import PropTypes from "prop-types";
+import PropTypes from "prop-types"
 
 const MyLikes = ({ user }) => {
 
@@ -73,6 +73,6 @@ MyLikes.propTypes = {
   user: PropTypes.shape({
     name: PropTypes.string.isRequired,
   }).isRequired,
-};
+}
 
 export default MyLikes
