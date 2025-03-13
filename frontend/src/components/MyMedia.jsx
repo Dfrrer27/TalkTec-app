@@ -2,6 +2,7 @@ import PropTypes from "prop-types"
 
 const MyMedia = ({ publications }) => {
   return (
+    console.log(publications),
     <>
       {publications.map(t => (
         <div key={t.id}>

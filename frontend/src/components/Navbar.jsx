@@ -37,6 +37,7 @@ function Result({ data, isLoading, isError, error }) {
 
 const Navbar = () => {
   
+  //Estados
   const [theme, setTheme] = useState('light')
   const [menuOpen, setMenuOpen] = useState(false)
   const [userInfo, setUserInfo] = useState(null)
@@ -74,17 +75,19 @@ const Navbar = () => {
       console.error('Error al obtener detalles del usuario', error)
     }
   }
-
+  
+  // Función para cambiar entre light y dark theme
   const toggleTheme = () => {
     const updatedTheme = theme === 'light' ? 'dark' : 'light'
     setTheme(updatedTheme)
-    localStorage.setItem('theme', updatedTheme)
+    localStorage.setItem('theme', updatedTheme) // Guardar el tema en el almacenamiento local
   }
 
   const toggleMenu = () => {
     setMenuOpen(!menuOpen)
   }
 
+  // Efecto secundario para agregar o quitar la clase 'dark-theme' al body del documento
   useEffect(() => {
     document.body.classList.toggle('dark-theme', theme === 'dark')
   }, [theme])

@@ -1,5 +1,6 @@
 # Archivos y directorios generados por Django y Python
 __pycache__/
+migrations/
 *.pyc
 db.sqlite3
 

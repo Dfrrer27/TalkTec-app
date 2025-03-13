@@ -41,7 +41,6 @@ const EditPublication = ({ publication, close }) => {
     editPublicationMutation.mutate(formData)
   }
 
-
   return (
     <div className="modal-overlay-publication">
       <div className="modal-content-publication">

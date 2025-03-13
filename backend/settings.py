@@ -88,7 +88,7 @@ ASGI_APPLICATION = 'backend.asgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'talktecv1',
+        'NAME': 'talktec',
         'USER': 'root',
         'PASSWORD': '',
         'HOST': 'localhost',

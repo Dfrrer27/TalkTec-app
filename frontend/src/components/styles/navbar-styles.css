@@ -79,7 +79,7 @@ nav{
 }
 
 .search-result:hover {
-  background: #f0f0f0;
+  background: var(--search-info);
 }
 
 .search-result img {

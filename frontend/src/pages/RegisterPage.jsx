@@ -86,7 +86,7 @@ const RegisterPage = () => {
                 <input
                 value={code}
                 onChange={(e) => setCode(e.target.value)} 
-                type="code" name="code" id="code" placeholder="123456" autoComplete="off"/>
+                type="code" name="code" id="code" placeholder="123456" autoComplete="off" maxLength={6}/>
   
                 <input
                 value={email}

@@ -11,7 +11,7 @@ const MyLikes = ({ user }) => {
   const userId = localStorage.getItem('user_id')
 
   const { data: likes, isLoading, isError, error } = useQuery({
-    queryKey: ['publications'], 
+    queryKey: ['publications', user.name], 
     queryFn: () => getUserLikes(user.name),
   })
 
@@ -20,7 +20,7 @@ const MyLikes = ({ user }) => {
 
   return (
     <>
-      {likes.map && likes.map(t => (
+      {likes.map(t => (
         <div key={t.id} className="container-post">
           <div className="post-row">
             <div className="user-profile-post">
